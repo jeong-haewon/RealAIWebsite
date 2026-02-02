@@ -5,16 +5,16 @@
 
 // ============================================
 // Morphing Binary Animation
-// 0s and 1s that morph between shapes: Grid → Brain → Kidney → Galaxy
+// 0s and 1s that morph between shapes: Grid → Pregnant Woman → Kidney → Galaxy → REAL AI
 // ============================================
 class MorphingBinary {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 200;
+        this.particleCount = 400;
         this.currentShape = 0;
-        this.shapes = ['grid', 'brain', 'kidney', 'galaxy', 'text'];
+        this.shapes = ['grid', 'pregnant', 'kidney', 'galaxy', 'text'];
         this.transitionProgress = 0;
         this.isFirstGrid = true;  // Track if we're in the initial grid phase
 
@@ -72,7 +72,7 @@ class MorphingBinary {
                 targetY: pos.y,
                 char: char,
                 color: char === '1' ? this.colors.blue : this.colors.darkBlue,
-                size: 12 + Math.random() * 4,
+                size: 10 + Math.random() * 3,
                 vx: 0,
                 vy: 0
             });
@@ -103,41 +103,127 @@ class MorphingBinary {
                 }
                 break;
 
-            case 'brain':
-                // Brain shape: two hemispheres with wavy edges and a central division
+            case 'pregnant':
+                // Pregnant woman silhouette - side profile facing right
+                // Outline points for the silhouette (normalized coordinates)
+                const outlinePoints = [];
+                const sc = this.scale * 0.9;
+                const ox = this.centerX - sc * 0.1; // Offset to center
+                const oy = this.centerY;
+
+                // Head (circle at top)
+                const headRadius = sc * 0.18;
+                const headCenterX = ox + sc * 0.05;
+                const headCenterY = oy - sc * 0.75;
+                for (let a = 0; a < Math.PI * 2; a += 0.15) {
+                    outlinePoints.push({
+                        x: headCenterX + Math.cos(a) * headRadius,
+                        y: headCenterY + Math.sin(a) * headRadius * 1.1
+                    });
+                }
+
+                // Hair bun at back of head
+                const bunRadius = sc * 0.12;
+                const bunCenterX = headCenterX - headRadius * 0.7;
+                const bunCenterY = headCenterY - headRadius * 0.3;
+                for (let a = 0; a < Math.PI * 2; a += 0.2) {
+                    outlinePoints.push({
+                        x: bunCenterX + Math.cos(a) * bunRadius,
+                        y: bunCenterY + Math.sin(a) * bunRadius
+                    });
+                }
+
+                // Neck
+                for (let t = 0; t <= 1; t += 0.1) {
+                    outlinePoints.push({
+                        x: ox + sc * 0.08,
+                        y: oy - sc * 0.55 + t * sc * 0.1
+                    });
+                }
+
+                // Back line (from neck down)
+                for (let t = 0; t <= 1; t += 0.05) {
+                    const backCurve = Math.sin(t * Math.PI) * 0.08;
+                    outlinePoints.push({
+                        x: ox - sc * 0.15 - backCurve * sc,
+                        y: oy - sc * 0.45 + t * sc * 0.9
+                    });
+                }
+
+                // Front - chest area
+                for (let t = 0; t <= 1; t += 0.08) {
+                    const chestCurve = Math.sin(t * Math.PI) * 0.12;
+                    outlinePoints.push({
+                        x: ox + sc * 0.15 + chestCurve * sc,
+                        y: oy - sc * 0.45 + t * sc * 0.25
+                    });
+                }
+
+                // Pregnant belly - the prominent curve
+                for (let t = 0; t <= 1; t += 0.03) {
+                    const angle = -Math.PI * 0.3 + t * Math.PI * 1.1;
+                    const bellyRadius = sc * 0.4;
+                    const bellyCenterX = ox + sc * 0.1;
+                    const bellyCenterY = oy + sc * 0.05;
+                    outlinePoints.push({
+                        x: bellyCenterX + Math.cos(angle) * bellyRadius * 0.9,
+                        y: bellyCenterY + Math.sin(angle) * bellyRadius
+                    });
+                }
+
+                // Lower body / legs (simplified)
+                for (let t = 0; t <= 1; t += 0.08) {
+                    // Front leg line
+                    outlinePoints.push({
+                        x: ox + sc * 0.1 - t * sc * 0.05,
+                        y: oy + sc * 0.4 + t * sc * 0.5
+                    });
+                    // Back leg line
+                    outlinePoints.push({
+                        x: ox - sc * 0.15 + t * sc * 0.02,
+                        y: oy + sc * 0.45 + t * sc * 0.45
+                    });
+                }
+
+                // Arms
+                // Back arm
+                for (let t = 0; t <= 1; t += 0.1) {
+                    outlinePoints.push({
+                        x: ox - sc * 0.2 - t * sc * 0.1,
+                        y: oy - sc * 0.35 + t * sc * 0.35
+                    });
+                }
+                // Front arm resting on belly
+                for (let t = 0; t <= 1; t += 0.1) {
+                    const armCurve = Math.sin(t * Math.PI) * 0.1;
+                    outlinePoints.push({
+                        x: ox + sc * 0.25 + t * sc * 0.15,
+                        y: oy - sc * 0.25 + t * sc * 0.2 + armCurve * sc
+                    });
+                }
+
+                // Fill particles along the outline and inside
                 for (let i = 0; i < count; i++) {
-                    let x, y;
-                    const t = i / count;
-
-                    if (i < count * 0.85) {
-                        // Main brain mass - two lobes
-                        const angle = (i / (count * 0.85)) * Math.PI * 2;
-
-                        // Base radius with wavy edges (brain folds/gyri)
-                        const waveFreq = 8;
-                        const waveAmp = 0.12;
-                        const baseRadius = 0.85 + Math.sin(angle * waveFreq) * waveAmp;
-
-                        // Create two hemispheres with a pinch in the middle
-                        const hemisphereEffect = Math.abs(Math.cos(angle));
-                        const pinch = angle > Math.PI * 0.4 && angle < Math.PI * 0.6 ? 0.3 : 0;
-                        const pinch2 = angle > Math.PI * 1.4 && angle < Math.PI * 1.6 ? 0.3 : 0;
-
-                        let radiusX = this.scale * baseRadius * (1 - pinch - pinch2);
-                        let radiusY = this.scale * baseRadius * 0.75;
-
-                        // Fill interior with some randomness
-                        const fillRandom = 0.3 + Math.random() * 0.7;
-                        x = this.centerX + Math.cos(angle) * radiusX * fillRandom;
-                        y = this.centerY + Math.sin(angle) * radiusY * fillRandom - this.scale * 0.05;
+                    if (i < count * 0.6) {
+                        // Place on outline with some thickness
+                        const pt = outlinePoints[i % outlinePoints.length];
+                        const offsetX = (Math.random() - 0.5) * sc * 0.08;
+                        const offsetY = (Math.random() - 0.5) * sc * 0.08;
+                        points.push({
+                            x: pt.x + offsetX,
+                            y: pt.y + offsetY
+                        });
                     } else {
-                        // Brain stem at bottom
-                        const stemProgress = (i - count * 0.85) / (count * 0.15);
-                        const stemWidth = 0.15 * (1 - stemProgress * 0.5);
-                        x = this.centerX + (Math.random() - 0.5) * this.scale * stemWidth;
-                        y = this.centerY + this.scale * 0.65 + stemProgress * this.scale * 0.25;
+                        // Fill interior of belly area
+                        const angle = Math.random() * Math.PI * 2;
+                        const r = Math.random() * sc * 0.35;
+                        const bellyCenterX = ox + sc * 0.1;
+                        const bellyCenterY = oy + sc * 0.05;
+                        points.push({
+                            x: bellyCenterX + Math.cos(angle) * r * 0.8,
+                            y: bellyCenterY + Math.sin(angle) * r
+                        });
                     }
-                    points.push({ x, y });
                 }
                 break;
 
