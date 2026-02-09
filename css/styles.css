@@ -127,6 +127,22 @@ nav {
     align-items: center;
 }
 
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.ucsb-logo {
+    display: flex;
+    align-items: center;
+}
+
+.ucsb-logo img {
+    height: 28px;
+    width: auto;
+}
+
 .logo {
     font-size: 1.25rem;
     font-weight: 600;
