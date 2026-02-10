@@ -1,6 +1,13 @@
 {
   "news": [
     {
+      "title": "REAL AI Launches Its First AI Bootcamp for High School Students",
+      "date": "Sep 2025",
+      "content": "REAL AI successfully completed its inaugural three-week AI Bootcamp, engaging 20 high school students in hands-on learning and creative exploration of AI. The program fostered strong student enthusiasm, prompted reflection on future academic pathways, and inspired the announcement of an all-girls AI Bootcamp planned for next summer. Beyond student impact, the bootcamp also proved formative for participating graduate instructors, highlighting its value as both an educational and mentoring experience.",
+      "link": "https://jeong-lab.notion.site/SST-2025-REAL-AI-Bootcamp-Learn-Create-and-Imagine-the-Future-268bbe33121c80f2b775eee99a86a4d4?source=copy_link",
+      "image": "real_ai_launches_its_first_ai__1770688947047.jpg"
+    },
+    {
       "title": "AI-Driven FTD Research Featured in The Transmitter",
       "date": "Nov 2025",
       "content": "PhD student Louisa Cornelis uses explainable graph neural networks and LLM-assisted analysis to study frontotemporal degeneration, predicting cognitive decline from proteomics data.",
