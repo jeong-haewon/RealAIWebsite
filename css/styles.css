@@ -388,6 +388,32 @@ nav {
 /* ============================================
    About Section
    ============================================ */
+.about-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-header h2 {
+    margin-bottom: 0;
+}
+
+.about-header .about-stats {
+    display: grid;
+    gap: 1rem;
+}
+
+.about-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-text {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
 .about-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -432,14 +458,15 @@ nav {
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--text-primary);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .approach-grid-inline {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
+    width: 100%;
 }
 
 .approach-item-inline {
@@ -449,24 +476,24 @@ nav {
 }
 
 .approach-item-inline .approach-number {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--sky-blue);
     display: block;
-    margin-bottom: 0.25rem;
-}
-
-.approach-item-inline h4 {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-primary);
     margin-bottom: 0.35rem;
 }
 
+.approach-item-inline h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
 .approach-item-inline p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
 }
 
@@ -504,10 +531,10 @@ nav {
 }
 
 .research-card {
-    padding: 2.5rem;
+    padding: 1.25rem;
     background: white;
     border: 1px solid var(--border-light);
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -535,46 +562,51 @@ nav {
     opacity: 1;
 }
 
-.research-card:hover .card-icon {
-    transform: scale(1.1);
+.research-card:hover .card-icon img {
+    transform: scale(1.02);
     transition: transform 0.3s ease;
 }
 
 .card-icon {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
     transition: transform 0.3s ease;
 }
 
-.card-icon {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 1.5rem;
-    color: var(--sky-blue);
+.card-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
 }
 
 .card-icon svg {
-    width: 100%;
-    height: 100%;
+    width: 56px;
+    height: 56px;
+    color: var(--sky-blue);
 }
 
 .research-card h3 {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
 }
 
 .card-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--sky-blue);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-weight: 500;
 }
 
 .research-card p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .card-link {
@@ -905,6 +937,15 @@ footer {
     .approach-grid-inline {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .about-header {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-header .about-stats {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .about-stats {
