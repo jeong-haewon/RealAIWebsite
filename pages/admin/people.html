@@ -119,6 +119,29 @@
             background: #218838;
         }
 
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .action-buttons {
             display: flex;
             gap: 1rem;
@@ -430,7 +453,9 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-success" onclick="submitForReview()">Submit for Review</button>
+                    <button class="btn btn-success" id="btnSubmit" onclick="submitForReview()">Add New Person</button>
+                    <button class="btn btn-warning" id="btnUpdate" onclick="updateExisting()" style="display: none;">Update Person</button>
+                    <button class="btn btn-danger" id="btnDelete" onclick="deleteExisting()" style="display: none;">Delete Person</button>
                     <button class="btn btn-secondary" onclick="copyJSON()">Copy JSON</button>
                     <button class="btn btn-secondary" onclick="newPerson()">Clear Form</button>
                 </div>
@@ -566,6 +591,11 @@
             if (photoUploader) photoUploader.clear();
             document.getElementById('photoUploadArea').classList.remove('has-image');
 
+            // Show Update/Delete buttons, hide Add button
+            document.getElementById('btnSubmit').style.display = 'none';
+            document.getElementById('btnUpdate').style.display = 'inline-block';
+            document.getElementById('btnDelete').style.display = 'inline-block';
+
             updateAdvisorFieldVisibility();
             updatePreview();
         }
@@ -585,6 +615,11 @@
                 <strong>Click to upload</strong> or drag and drop<br>
                 <small>JPG, PNG, WebP (max 1200x1200)</small>
             `;
+
+            // Show Add button, hide Update/Delete buttons
+            document.getElementById('btnSubmit').style.display = 'inline-block';
+            document.getElementById('btnUpdate').style.display = 'none';
+            document.getElementById('btnDelete').style.display = 'none';
 
             updatePreview();
         }
@@ -705,14 +740,15 @@
                 // Upload image if provided
                 updateSubmitStep('images', 'active');
                 if (uploadData) {
-                    const imagePath = `assets/images/people/${generateFilename(person.name)}`;
+                    const filename = generateFilename(person.name);  // Generate once and reuse
+                    const imagePath = `assets/images/people/${filename}`;
                     await github.commitBinaryFile(
                         branchName,
                         imagePath,
                         uploadData.base64,
                         `Add photo for ${person.name}`
                     );
-                    person.image = generateFilename(person.name);
+                    person.image = filename;
                 }
                 updateSubmitStep('images', 'done');
 
@@ -770,6 +806,174 @@
                     if (el && el.classList.contains('active')) {
                         updateSubmitStep(step, 'error');
                     }
+                });
+            }
+        }
+
+        async function updateExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) {
+                showLoginModal();
+                return;
+            }
+
+            const selectValue = document.getElementById('personSelect').value;
+            if (!selectValue) {
+                showToast('Please select a person to update', true);
+                return;
+            }
+
+            const [category, idx] = selectValue.split(':');
+            const index = parseInt(idx);
+
+            const { person, uploadData } = getPersonJSON();
+            if (!person.name) {
+                showToast('Please enter a name', true);
+                return;
+            }
+
+            // Keep existing image if no new upload
+            const existingPerson = peopleData[category][index];
+            if (!uploadData && existingPerson.image) {
+                person.image = existingPerson.image;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/update-person-${person.name.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                if (uploadData) {
+                    const filename = generateFilename(person.name);
+                    const imagePath = `assets/images/people/${filename}`;
+                    await github.commitBinaryFile(branchName, imagePath, uploadData.base64, `Update photo for ${person.name}`);
+                    person.image = filename;
+                }
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/people.json');
+                let currentData = JSON.parse(fileData.content);
+                if (!currentData[category]) currentData[category] = [];
+                currentData[category][index] = person;
+
+                await github.commitFile(branchName, 'data/people.json', JSON.stringify(currentData, null, 2), `Update person: ${person.name}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Update person: ${person.name}`,
+                    `## Summary\nUpdating ${category.slice(0, -1)}: **${person.name}**\n\n## Changes\n- Title: ${person.title || 'None'}\n- Category: ${category}\n${uploadData ? '- Photo: Updated' : '- Photo: Unchanged'}\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Update pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Update error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        async function deleteExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) {
+                showLoginModal();
+                return;
+            }
+
+            const selectValue = document.getElementById('personSelect').value;
+            if (!selectValue) {
+                showToast('Please select a person to delete', true);
+                return;
+            }
+
+            const [category, idx] = selectValue.split(':');
+            const index = parseInt(idx);
+            const existingPerson = peopleData[category][index];
+
+            if (!confirm(`Are you sure you want to delete "${existingPerson.name}"?\n\nThis will create a pull request for review.`)) {
+                return;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/delete-person-${existingPerson.name.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/people.json');
+                let currentData = JSON.parse(fileData.content);
+                if (currentData[category]) {
+                    currentData[category].splice(index, 1);
+                }
+
+                await github.commitFile(branchName, 'data/people.json', JSON.stringify(currentData, null, 2), `Delete person: ${existingPerson.name}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Delete person: ${existingPerson.name}`,
+                    `## Summary\nDeleting ${category.slice(0, -1)}: **${existingPerson.name}**\n\n## Details\n- Category: ${category}\n- This removes the person from the list\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Delete pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Delete error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
                 });
             }
         }

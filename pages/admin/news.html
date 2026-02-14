@@ -95,6 +95,11 @@
         .btn-secondary:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
         .btn-success { background: #28a745; color: white; }
         .btn-success:hover { background: #218838; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-warning:hover { background: #e0a800; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-danger:hover { background: #c82333; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         .action-buttons {
             display: flex;
@@ -274,7 +279,9 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-success" onclick="submitForReview()">Submit for Review</button>
+                    <button class="btn btn-success" id="btnSubmit" onclick="submitForReview()">Add New Item</button>
+                    <button class="btn btn-warning" id="btnUpdate" onclick="updateExisting()" style="display: none;">Update Item</button>
+                    <button class="btn btn-danger" id="btnDelete" onclick="deleteExisting()" style="display: none;">Delete Item</button>
                     <button class="btn btn-secondary" onclick="copyJSON()">Copy JSON</button>
                     <button class="btn btn-secondary" onclick="newItem()">Clear Form</button>
                 </div>
@@ -389,6 +396,11 @@
             if (imageUploader) imageUploader.clear();
             document.getElementById('imageUploadArea').classList.remove('has-image');
 
+            // Show Update/Delete buttons, hide Add button
+            document.getElementById('btnSubmit').style.display = 'none';
+            document.getElementById('btnUpdate').style.display = 'inline-block';
+            document.getElementById('btnDelete').style.display = 'inline-block';
+
             updatePreview();
         }
 
@@ -405,6 +417,11 @@
                 <strong>Click to upload</strong> or drag and drop<br>
                 <small>JPG, PNG, WebP (recommended: 800x450)</small>
             `;
+
+            // Show Add button, hide Update/Delete buttons
+            document.getElementById('btnSubmit').style.display = 'inline-block';
+            document.getElementById('btnUpdate').style.display = 'none';
+            document.getElementById('btnDelete').style.display = 'none';
 
             updatePreview();
         }
@@ -525,6 +542,153 @@
 
             } catch (error) {
                 console.error('Submit error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        async function updateExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) { showLoginModal(); return; }
+
+            const selectIndex = document.getElementById('newsSelect').value;
+            if (selectIndex === '') { showToast('Please select an item to update', true); return; }
+
+            const { item, uploadData } = getItemJSON();
+            if (!item.title) { showToast('Please enter a title', true); return; }
+
+            // Keep existing image if no new upload
+            const existingItem = newsData[parseInt(selectIndex)];
+            if (!uploadData && existingItem.image) {
+                item.image = existingItem.image;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/update-news-${item.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                if (uploadData) {
+                    const filename = generateFilename(item.title);
+                    const imagePath = `assets/images/news/${filename}`;
+                    await github.commitBinaryFile(branchName, imagePath, uploadData.base64, `Update image for news: ${item.title}`);
+                    item.image = filename;
+                }
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/news.json');
+                let currentData = JSON.parse(fileData.content);
+                if (!currentData.news) currentData.news = [];
+                currentData.news[parseInt(selectIndex)] = item; // Update existing item
+
+                await github.commitFile(branchName, 'data/news.json', JSON.stringify(currentData, null, 2), `Update news: ${item.title}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Update news: ${item.title}`,
+                    `## Summary\nUpdating news item: **${item.title}**\n\n## Changes\n- Date: ${item.date}\n- Link: ${item.link || 'None'}\n${uploadData ? '- Image: Updated' : '- Image: Unchanged'}\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Update pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Update error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        async function deleteExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) { showLoginModal(); return; }
+
+            const selectIndex = document.getElementById('newsSelect').value;
+            if (selectIndex === '') { showToast('Please select an item to delete', true); return; }
+
+            const existingItem = newsData[parseInt(selectIndex)];
+            if (!confirm(`Are you sure you want to delete "${existingItem.title}"?\n\nThis will create a pull request for review.`)) {
+                return;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/delete-news-${existingItem.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                // Note: We don't delete the image file to avoid breaking other potential references
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/news.json');
+                let currentData = JSON.parse(fileData.content);
+                if (!currentData.news) currentData.news = [];
+                currentData.news.splice(parseInt(selectIndex), 1); // Remove item
+
+                await github.commitFile(branchName, 'data/news.json', JSON.stringify(currentData, null, 2), `Delete news: ${existingItem.title}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Delete news: ${existingItem.title}`,
+                    `## Summary\nDeleting news item: **${existingItem.title}**\n\n## Details\n- Date: ${existingItem.date}\n- This removes the item from the news list\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Delete pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Delete error:', error);
                 document.getElementById('submitResult').innerHTML = `
                     <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
                         <strong>Error:</strong> ${error.message}
