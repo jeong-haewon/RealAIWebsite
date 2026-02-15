@@ -1,5 +1,12 @@
 [
     {
+        "title": "Speaking the Neural Code",
+        "speaker": "Vedang Lad",
+        "affiliation": "Stanford University",
+        "date": "2026-02-13",
+        "image": "vedang_lad.jpg"
+    },
+    {
         "title": "Biologically Plausible Computing: Navigating Energy Landscapes",
         "speaker": "Francesco Bullo",
         "affiliation": "Department of Mechanical Engineering, UCSB",
