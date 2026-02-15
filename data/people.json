@@ -83,7 +83,7 @@
       "website": ""
     },
     {
-      "name": "Guillermo Bernárdez Gil",
+      "name": "Guillermo BernÃ¡rdez Gil",
       "title": "Postdoc",
       "advisor": "",
       "image": "guillermo_bernardez_gil.webp",
@@ -147,7 +147,7 @@
       "website": ""
     },
     {
-      "name": "Luís F. Pereira",
+      "name": "LuÃ­s F. Pereira",
       "title": "Research Engineer",
       "advisor": "",
       "image": "luis_pereira.webp",
@@ -195,7 +195,7 @@
       "website": ""
     },
     {
-      "name": "Fatih Dinç",
+      "name": "Fatih DinÃ§",
       "title": "Postdoc",
       "advisor": "",
       "image": "fatih_dinc.webp",
@@ -219,13 +219,5 @@
       "website": ""
     }
   ],
-  "advisors": [
-    {
-      "name": "Johan Mathe",
-      "title": "Industry Advisor",
-      "image": "johan_mathe.webp",
-      "description": "",
-      "website": ""
-    }
-  ]
+  "advisors": []
 }
