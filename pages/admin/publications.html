@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications Editor - REAL AI Lab</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .admin-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .editor-panel, .preview-panel {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--sky-blue);
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sky-blue);
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary { background: var(--sky-blue); color: white; }
+        .btn-primary:hover { background: #4fa8d1; }
+        .btn-secondary { background: white; color: var(--text-primary); border: 1px solid var(--border-light); }
+        .btn-secondary:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
+        .btn-success { background: #28a745; color: white; }
+        .btn-success:hover { background: #218838; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-warning:hover { background: #e0a800; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-danger:hover { background: #c82333; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            flex-wrap: wrap;
+        }
+
+        .item-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .item-selector select {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        /* Image upload styles */
+        .image-upload-group { margin-bottom: 1.25rem; }
+        .image-upload-label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: var(--text-primary); font-size: 0.9rem; }
+        .image-upload-area {
+            border: 2px dashed var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fafafa;
+        }
+        .image-upload-area:hover { border-color: var(--sky-blue); background: #f0f7ff; }
+        .image-upload-area.has-image { padding: 0.5rem; border-style: solid; }
+        .image-upload-area img { max-width: 100%; max-height: 200px; border-radius: 6px; }
+        .image-upload-area input[type="file"] { display: none; }
+        .image-upload-hint { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .image-upload-text { color: var(--text-secondary); font-size: 0.9rem; }
+        .image-upload-text strong { color: var(--sky-blue); }
+
+        /* Preview styles */
+        .preview-publication {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+        }
+
+        .preview-publication .image {
+            width: 180px;
+            min-width: 180px;
+            height: 130px;
+            background: linear-gradient(135deg, #f8fbfc 0%, #e8f4f8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .preview-publication .image img { width: 100%; height: 100%; object-fit: cover; }
+        .preview-publication .content { flex: 1; }
+        .preview-publication .title { font-size: 1rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.4; }
+        .preview-publication .authors { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; line-height: 1.5; }
+        .preview-publication .venue { font-size: 0.85rem; color: var(--sky-blue); font-weight: 500; }
+
+        .toast {
+            position: fixed; bottom: 2rem; right: 2rem; background: #28a745; color: white;
+            padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error { background: #dc3545; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--sky-blue); text-decoration: none; font-size: 0.9rem; margin-bottom: 1rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .back-link::before { content: '\2190'; }
+
+        @media (max-width: 1024px) { .admin-container { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .preview-publication { flex-direction: column; } .preview-publication .image { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-group">
+                <a href="https://www.ucsb.edu" target="_blank" class="ucsb-logo">
+                    <img src="../../assets/images/logo/UC_Santa_Barbara_Wordmark_Navy_RGB.png" alt="UC Santa Barbara">
+                </a>
+                <a href="../../index.html" class="logo">REAL AI</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../people.html">People</a></li>
+                <li><a href="../publications.html">Publications</a></li>
+                <li><a href="../news.html">News</a></li>
+                <li><a href="../events.html">Events</a></li>
+                <li><a href="../give.html">Give</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Publications Editor</h1>
+            </div>
+        </section>
+
+        <div class="admin-container">
+            <div class="editor-panel">
+                <a href="index.html" class="back-link">Back to Dashboard</a>
+
+                <div id="githubStatus" class="github-status disconnected">
+                    <span>&#9888;</span>
+                    <span>Not connected to GitHub</span>
+                    <a onclick="showLoginModal()">Connect</a>
+                </div>
+
+                <h2 class="panel-title">Editor</h2>
+
+                <div class="item-selector">
+                    <select id="pubSelect">
+                        <option value="">-- New Publication --</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="newItem()">New Item</button>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pubYear">Year</label>
+                        <select id="pubYear">
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pubVenue">Venue</label>
+                        <input type="text" id="pubVenue" placeholder="e.g., NeurIPS 2025, ICML 2025">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pubTitle">Title</label>
+                    <input type="text" id="pubTitle" placeholder="Publication title">
+                </div>
+
+                <div class="form-group">
+                    <label for="pubAuthors">Authors</label>
+                    <input type="text" id="pubAuthors" placeholder="e.g., J Smith, A Johnson, M Williams">
+                    <p class="form-hint">Use format: First Initial Last Name, separated by commas</p>
+                </div>
+
+                <div class="image-upload-group">
+                    <label class="image-upload-label">Image (Optional)</label>
+                    <div class="image-upload-area" id="imageUploadArea" onclick="document.getElementById('imageInput').click()">
+                        <input type="file" id="imageInput" accept="image/*">
+                        <div id="imagePreviewUpload" class="image-upload-text">
+                            <strong>Click to upload</strong> or drag and drop<br>
+                            <small>JPG, PNG, WebP (recommended: 800x600)</small>
+                        </div>
+                    </div>
+                    <p class="image-upload-hint">Figure or diagram from the paper</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="btnSubmit" onclick="submitForReview()">Add New Publication</button>
+                    <button class="btn btn-warning" id="btnUpdate" onclick="updateExisting()" style="display: none;">Update Publication</button>
+                    <button class="btn btn-danger" id="btnDelete" onclick="deleteExisting()" style="display: none;">Delete Publication</button>
+                    <button class="btn btn-secondary" onclick="copyJSON()">Copy JSON</button>
+                    <button class="btn btn-secondary" onclick="newItem()">Clear Form</button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <h2 class="panel-title">Live Preview</h2>
+                <div class="preview-publication">
+                    <div class="image" id="previewImage">No image</div>
+                    <div class="content">
+                        <h3 class="title" id="previewTitle">Publication Title</h3>
+                        <p class="authors" id="previewAuthors">Authors</p>
+                        <p class="venue" id="previewVenue">Venue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast" id="toast">Message</div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">REAL AI</span>
+                    <p>Reliable, Efficient, and Aligned AI</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../news.html">News</a>
+                    <a href="../people.html">People</a>
+                    <a href="../publications.html">Publications</a>
+                    <a href="../events.html">Events</a>
+                    <a href="../give.html">Give</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 REAL AI, UC Santa Barbara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin.js"></script>
+    <script>
+        let pubData = {};
+        let imageUploader = null;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadPubData();
+
+            imageUploader = new ImageUploader('imageInput', 'imagePreviewUpload', {
+                maxWidth: 800,
+                maxHeight: 600,
+                quality: 0.85
+            });
+
+            document.getElementById('imageInput').addEventListener('imageReady', () => {
+                document.getElementById('imageUploadArea').classList.add('has-image');
+                updatePreview();
+            });
+
+            const fields = ['pubTitle', 'pubAuthors', 'pubVenue', 'pubYear'];
+            fields.forEach(field => {
+                document.getElementById(field).addEventListener('input', updatePreview);
+                document.getElementById(field).addEventListener('change', updatePreview);
+            });
+
+            updatePreview();
+        });
+
+        async function loadPubData() {
+            try {
+                const response = await fetch('../../data/publications.json');
+                pubData = await response.json();
+                populateSelector();
+            } catch (error) {
+                console.log('Could not load publications.json:', error);
+            }
+        }
+
+        function populateSelector() {
+            const select = document.getElementById('pubSelect');
+            select.innerHTML = '<option value="">-- New Publication --</option>';
+
+            // Sort years in descending order
+            const years = Object.keys(pubData).sort((a, b) => b - a);
+
+            years.forEach(year => {
+                if (pubData[year] && pubData[year].length > 0) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = year;
+                    pubData[year].forEach((pub, idx) => {
+                        const option = document.createElement('option');
+                        option.value = `${year}:${idx}`;
+                        option.textContent = pub.title.substring(0, 50) + (pub.title.length > 50 ? '...' : '');
+                        optgroup.appendChild(option);
+                    });
+                    select.appendChild(optgroup);
+                }
+            });
+
+            select.addEventListener('change', (e) => {
+                if (e.target.value !== '') {
+                    const [year, idx] = e.target.value.split(':');
+                    loadItem(year, parseInt(idx));
+                } else {
+                    newItem();
+                }
+            });
+        }
+
+        function loadItem(year, index) {
+            const item = pubData[year][index];
+            if (!item) return;
+
+            document.getElementById('pubYear').value = year;
+            document.getElementById('pubTitle').value = item.title || '';
+            document.getElementById('pubAuthors').value = item.authors || '';
+            document.getElementById('pubVenue').value = item.venue || '';
+
+            if (imageUploader) imageUploader.clear();
+            document.getElementById('imageUploadArea').classList.remove('has-image');
+
+            // Show Update/Delete buttons, hide Add button
+            document.getElementById('btnSubmit').style.display = 'none';
+            document.getElementById('btnUpdate').style.display = 'inline-block';
+            document.getElementById('btnDelete').style.display = 'inline-block';
+
+            updatePreview();
+        }
+
+        function newItem() {
+            document.getElementById('pubSelect').value = '';
+            document.getElementById('pubTitle').value = '';
+            document.getElementById('pubAuthors').value = '';
+            document.getElementById('pubVenue').value = '';
+            document.getElementById('pubYear').value = '2025';
+
+            if (imageUploader) imageUploader.clear();
+            document.getElementById('imageUploadArea').classList.remove('has-image');
+            document.getElementById('imagePreviewUpload').innerHTML = `
+                <strong>Click to upload</strong> or drag and drop<br>
+                <small>JPG, PNG, WebP (recommended: 800x600)</small>
+            `;
+
+            // Show Add button, hide Update/Delete buttons
+            document.getElementById('btnSubmit').style.display = 'inline-block';
+            document.getElementById('btnUpdate').style.display = 'none';
+            document.getElementById('btnDelete').style.display = 'none';
+
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const title = document.getElementById('pubTitle').value;
+            const authors = document.getElementById('pubAuthors').value;
+            const venue = document.getElementById('pubVenue').value;
+
+            document.getElementById('previewTitle').textContent = title || 'Publication Title';
+            document.getElementById('previewAuthors').textContent = authors || 'Authors';
+            document.getElementById('previewVenue').textContent = venue || 'Venue';
+
+            const imageDiv = document.getElementById('previewImage');
+            const uploadData = imageUploader ? imageUploader.getUploadData() : null;
+
+            if (uploadData) {
+                imageDiv.innerHTML = `<img src="data:image/jpeg;base64,${uploadData.base64}" alt="${title}">`;
+            } else {
+                const select = document.getElementById('pubSelect');
+                if (select.value !== '') {
+                    const [year, idx] = select.value.split(':');
+                    const item = pubData[year][parseInt(idx)];
+                    if (item && item.image) {
+                        imageDiv.innerHTML = `<img src="../../assets/images/publications/${item.image}" alt="${title}" onerror="this.parentElement.textContent='No image'">`;
+                    } else {
+                        imageDiv.textContent = 'No image';
+                    }
+                } else {
+                    imageDiv.textContent = 'No image';
+                }
+            }
+        }
+
+        function generateFilename(title) {
+            return title.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '').substring(0, 30) + '_' + Date.now() + '.jpg';
+        }
+
+        function getItemJSON() {
+            const title = document.getElementById('pubTitle').value.trim();
+            const uploadData = imageUploader ? imageUploader.getUploadData() : null;
+
+            return {
+                year: document.getElementById('pubYear').value,
+                item: {
+                    title: title,
+                    authors: document.getElementById('pubAuthors').value.trim(),
+                    venue: document.getElementById('pubVenue').value.trim(),
+                    image: uploadData ? generateFilename(title) : ''
+                },
+                uploadData
+            };
+        }
+
+        function copyJSON() {
+            const { item } = getItemJSON();
+            const json = JSON.stringify(item, null, 2);
+            navigator.clipboard.writeText(json).then(() => showToast('JSON copied!')).catch(() => showToast('Failed', true));
+        }
+
+        async function submitForReview() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) { showLoginModal(); return; }
+
+            const { year, item, uploadData } = getItemJSON();
+            if (!item.title) { showToast('Please enter a title', true); return; }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/add-pub-${item.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                if (uploadData) {
+                    const filename = generateFilename(item.title);
+                    const imagePath = `assets/images/publications/${filename}`;
+                    await github.commitBinaryFile(branchName, imagePath, uploadData.base64, `Add image for publication: ${item.title}`);
+                    item.image = filename;
+                }
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/publications.json');
+                let currentData = JSON.parse(fileData.content);
+                if (!currentData[year]) currentData[year] = [];
+                currentData[year].unshift(item); // Add to beginning of year
+
+                await github.commitFile(branchName, 'data/publications.json', JSON.stringify(currentData, null, 2), `Add publication: ${item.title}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Add publication: ${item.title}`,
+                    `## Summary\nAdding publication: **${item.title}**\n\n## Details\n- Authors: ${item.authors}\n- Venue: ${item.venue}\n- Year: ${year}\n${uploadData ? '- Image: Included' : '- Image: Not provided'}\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Submit error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        async function updateExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) { showLoginModal(); return; }
+
+            const selectValue = document.getElementById('pubSelect').value;
+            if (selectValue === '') { showToast('Please select a publication to update', true); return; }
+
+            const [oldYear, idx] = selectValue.split(':');
+            const index = parseInt(idx);
+
+            const { year, item, uploadData } = getItemJSON();
+            if (!item.title) { showToast('Please enter a title', true); return; }
+
+            // Keep existing image if no new upload
+            const existingItem = pubData[oldYear][index];
+            if (!uploadData && existingItem.image) {
+                item.image = existingItem.image;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/update-pub-${item.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                if (uploadData) {
+                    const filename = generateFilename(item.title);
+                    const imagePath = `assets/images/publications/${filename}`;
+                    await github.commitBinaryFile(branchName, imagePath, uploadData.base64, `Update image for publication: ${item.title}`);
+                    item.image = filename;
+                }
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/publications.json');
+                let currentData = JSON.parse(fileData.content);
+
+                // If year changed, remove from old year and add to new year
+                if (oldYear !== year) {
+                    currentData[oldYear].splice(index, 1);
+                    if (!currentData[year]) currentData[year] = [];
+                    currentData[year].unshift(item);
+                } else {
+                    currentData[year][index] = item;
+                }
+
+                await github.commitFile(branchName, 'data/publications.json', JSON.stringify(currentData, null, 2), `Update publication: ${item.title}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Update publication: ${item.title}`,
+                    `## Summary\nUpdating publication: **${item.title}**\n\n## Changes\n- Authors: ${item.authors}\n- Venue: ${item.venue}\n- Year: ${year}${oldYear !== year ? ` (moved from ${oldYear})` : ''}\n${uploadData ? '- Image: Updated' : '- Image: Unchanged'}\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Update pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Update error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        async function deleteExisting() {
+            const github = new GitHubAdmin();
+            if (!github.isAuthenticated()) { showLoginModal(); return; }
+
+            const selectValue = document.getElementById('pubSelect').value;
+            if (selectValue === '') { showToast('Please select a publication to delete', true); return; }
+
+            const [year, idx] = selectValue.split(':');
+            const index = parseInt(idx);
+            const existingItem = pubData[year][index];
+
+            if (!confirm(`Are you sure you want to delete "${existingItem.title}"?\n\nThis will create a pull request for review.`)) {
+                return;
+            }
+
+            showSubmitModal();
+
+            try {
+                const validation = await github.validateToken();
+                if (!validation.valid) throw new Error('Invalid token. Please reconnect.');
+
+                await github.getDefaultBranch();
+
+                updateSubmitStep('branch', 'active');
+                const branchName = `content/delete-pub-${existingItem.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                await github.createBranch(branchName);
+                updateSubmitStep('branch', 'done');
+
+                updateSubmitStep('images', 'active');
+                updateSubmitStep('images', 'done');
+
+                updateSubmitStep('data', 'active');
+                const fileData = await github.getFileContent('data/publications.json');
+                let currentData = JSON.parse(fileData.content);
+                currentData[year].splice(index, 1);
+
+                await github.commitFile(branchName, 'data/publications.json', JSON.stringify(currentData, null, 2), `Delete publication: ${existingItem.title}`, fileData.sha);
+                updateSubmitStep('data', 'done');
+
+                updateSubmitStep('pr', 'active');
+                const pr = await github.createPullRequest(
+                    branchName,
+                    `Delete publication: ${existingItem.title}`,
+                    `## Summary\nDeleting publication: **${existingItem.title}**\n\n## Details\n- Authors: ${existingItem.authors}\n- Venue: ${existingItem.venue}\n- Year: ${year}\n\n---\n*Submitted via REAL AI Admin*`
+                );
+                updateSubmitStep('pr', 'done');
+
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Success!</strong><br>Delete pull request created.<br><br>
+                        <a href="${pr.html_url}" target="_blank" style="color: #155724; font-weight: 500;">View Pull Request &rarr;</a>
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Delete error:', error);
+                document.getElementById('submitResult').innerHTML = `
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                document.getElementById('submitModalFooter').style.display = 'flex';
+                ['branch', 'images', 'data', 'pr'].forEach(step => {
+                    const el = document.getElementById(`step-${step}`);
+                    if (el && el.classList.contains('active')) updateSubmitStep(step, 'error');
+                });
+            }
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = isError ? 'toast error show' : 'toast show';
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+    </script>
+</body>
+</html>
