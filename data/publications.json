@@ -93,7 +93,7 @@
       "image": ""
     },
     {
-      "title": "Differentially Private FrÃ©chet Mean on the Manifold of Symmetric Positive Definite (SPD) Matrices",
+      "title": "Differentially Private FrÃÂ©chet Mean on the Manifold of Symmetric Positive Definite (SPD) Matrices",
       "authors": "S Utpala, P Vepakomma, N Miolane",
       "venue": "TMLR 2023",
       "image": ""
@@ -156,7 +156,7 @@
     },
     {
       "title": "Position Paper: Challenges and Opportunities in Topological Deep Learning",
-      "authors": "T Papamarkou, T Birdal, M Bronstein, G Carlsson, J Curry, Y Gao, M Hajij, R Kwitt, P LiÃ², PD Lorenzo, V Maroulas, N Miolane, F Nasrin, KN Ramamurthy, B Rieck, S Scardapane, MT Schaub, P VeliÄkoviÄ, B Wang, Y Wang, G Wei, G Zamzmi",
+      "authors": "T Papamarkou, T Birdal, M Bronstein, G Carlsson, J Curry, Y Gao, M Hajij, R Kwitt, P LiÃÂ², PD Lorenzo, V Maroulas, N Miolane, F Nasrin, KN Ramamurthy, B Rieck, S Scardapane, MT Schaub, P VeliÃÂkoviÃÂ, B Wang, Y Wang, G Wei, G Zamzmi",
       "venue": "ICML 2024",
       "image": ""
     },
@@ -200,7 +200,7 @@
     },
     {
       "title": "TopoTune: A Framework for Generalized Combinatorial Complex Neural Networks",
-      "authors": "M Papillon, G BernÃ¡rdez, C Battiloro, N Miolane",
+      "authors": "M Papillon, G BernÃÂ¡rdez, C Battiloro, N Miolane",
       "venue": "ICML 2025",
       "image": "papillon_icml25.png"
     },
@@ -262,7 +262,7 @@
   "2026": [
     {
       "title": "When Machine Learning Gets Personal: Evaluating Prediction and Explanation",
-      "authors": "Louisa Cornelis, Guillermo Bernardez, Haewon Jeong, Nina Miolane",
+      "authors": "L Cornelis, G Bernardez, H Jeong, N Miolane",
       "venue": "ICLR 2026",
       "image": "when_machine_learning_gets_per_1771176579797.jpg"
     }
