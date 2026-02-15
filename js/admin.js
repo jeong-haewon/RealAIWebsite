@@ -403,17 +403,25 @@ function createLoginModal() {
                 <div class="instructions">
                     <h4>How to get a Personal Access Token:</h4>
                     <ol>
-                        <li>Go to <a href="https://github.com/settings/tokens/new" target="_blank">GitHub Token Settings</a></li>
-                        <li>Give it a name (e.g., "REAL AI Admin")</li>
-                        <li>Select expiration (90 days recommended)</li>
-                        <li>Under "Repository access", select "Only select repositories" and choose this website's repo</li>
-                        <li>Under "Permissions", expand "Repository permissions" and set:
+                        <li>Go to <a href="https://github.com/settings" target="_blank">GitHub Settings</a> (click your profile photo in the top right, then "Settings")</li>
+                        <li>Scroll down in the left sidebar and click <strong>"Developer settings"</strong> (at the very bottom)</li>
+                        <li>Click <strong>"Personal access tokens"</strong> → <strong>"Fine-grained tokens"</strong></li>
+                        <li>Click the <strong>"Generate new token"</strong> button</li>
+                        <li>Fill in the token details:
+                            <ul>
+                                <li><strong>Token name</strong>: "REAL AI Admin" (or any name you like)</li>
+                                <li><strong>Expiration</strong>: 90 days (recommended)</li>
+                            </ul>
+                        </li>
+                        <li>Under <strong>"Repository access"</strong>, select <strong>"Only select repositories"</strong> and choose the RealAIWebsite repo</li>
+                        <li>Under <strong>"Permissions"</strong>, expand <strong>"Repository permissions"</strong> and set:
                             <ul>
                                 <li><strong>Contents</strong>: Read and write</li>
                                 <li><strong>Pull requests</strong>: Read and write</li>
                             </ul>
                         </li>
-                        <li>Click "Generate token" and copy it</li>
+                        <li>Scroll down and click the green <strong>"Generate token"</strong> button</li>
+                        <li>Copy the token (starts with <code>github_pat_</code>) — you won't be able to see it again!</li>
                     </ol>
                 </div>
 
