@@ -8,11 +8,26 @@
     "heroImage": "neuroscience/hero.png",
     "contactEmail": "ninamiolane@ucsb.edu",
     "team": [
-      {"name": "Nina Miolane", "affiliation": "UC Santa Barbara"},
-      {"name": "Fatih Dinc", "affiliation": "UC Santa Barbara"},
-      {"name": "Francisco Acosta", "affiliation": "UC Santa Barbara"},
-      {"name": "Bariscan Kurtkaya", "affiliation": "UC Santa Barbara"},
-      {"name": "Abby Bertics", "affiliation": "UC Santa Barbara"}
+      {
+        "name": "Nina Miolane",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Fatih Dinc",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Francisco Acosta",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Bariscan Kurtkaya",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Abby Bertics",
+        "affiliation": "UC Santa Barbara"
+      }
     ],
     "content": "## The Problem\n\nNeuroscience experiments are crucial to advance our understanding of the brain, but they are time-consuming, costly, and limited in scope. Traditional approaches require extensive laboratory work with living organisms, creating bottlenecks in hypothesis testing and discovery.\n\nDigital twins offer a transformative solution: artificial neural network models that replicate brain circuit behavior, enabling rapid computational experimentation before biological validation.\n\n## Our Approach\n\nWe propose building digital twins of brain circuits using artificial neural networks. These computational models allow scientists to test hypotheses rapidly and at scale, generating predictions that collaborators then verify experimentally in living organisms.\n\n### Research Focus Areas\n\n**Memory Circuits** - We develop recurrent neural networks as computational models of short-term memory circuits. Our work reveals candidate mechanisms for how brains briefly store information, distilling findings into analytical laws.\n\n**Navigation Systems** - Using dynamic latent-variable models, we construct digital twins of spatial navigation circuits. These models reveal how neural populations encode both spatial and abstract representations.\n\n## Memory Research\n\nOur digital twins of memory circuits use recurrent neural networks to model how the brain temporarily stores information. This research has revealed fundamental mechanisms underlying short-term memory.\n\n### Key Findings\n\n**Geometric Restructuring** - We discovered how memory organization in neural networks undergoes geometric restructuring, providing insights into the computational principles of biological memory systems.\n\n**Dynamical Phases** - Our work identified two distinct dynamical regimes that sustain memory capabilities in recurrent networks, offering new understanding of how memories persist over time.\n\n## Navigation Research\n\nSpatial navigation is a fundamental cognitive function that involves complex neural computations. Our digital twins model how the brain represents space and guides movement.\n\n### Key Findings\n\n**Multi-Agent Tracking** - We examined how navigation networks adapt when tracking multiple agents simultaneously, revealing that internal representations differ fundamentally from single-agent scenarios.\n\n**Reward Integration** - Our research demonstrates how artificial networks integrate spatial and reward information in navigation codes, showing global distortions arising from local reward signals.\n\n## Recent Updates\n\n- **July 2025:** NeurReps workshop accepted at NeurIPS 2025\n- **June 2025:** Short-term memory digital twin datasets released on Zenodo\n- **May 2025:** Short-term memory digital twin paper accepted at ICML 2025\n- **December 2024:** Two navigation-focused papers accepted to NeurIPS 2024\n\n## Selected Publications\n\n### Understanding and Controlling the Geometry of Memory Organization in RNNs (2025)\nHaputhanthri, U., Storan, L., Jiang, Y., Raheja, T., Shai, A., Akengin, O., Miolane, N., Schnitzer, M. J., Dinc, F., & Tanaka, H.\n\nFocuses on geometric restructuring in digital twins supporting short-term memory.\n\n### Dynamical Phases of Short-Term Memory Mechanisms in RNNs (ICML 2025)\nKurtkaya, B., Dinc, F., Yuksekgonul, M., Blanco-Pozo, M., Cirakman, E., Schnitzer, M., Yemez, Y., Tanaka, H., Yuan, P., & Miolane, N.\n\nIdentifies two distinct dynamical regimes sustaining memory capabilities.\n\n### Not So Griddy: Internal Representations of RNNs Path Integrating More Than One Agent (NeurIPS 2024)\nRedman, W., Acosta, F., Acosta-Mendoza, S., Miolane, N.\n\nExamines how navigation networks adapt when tracking multiple agents simultaneously.\n\n### Global Distortions from Local Rewards: Neural Coding Strategies in Path-Integrating Neural Systems (NeurIPS 2024)\nAcosta, F., Dinc, F., Redman, W., Madhav, M., Klindt, D., Miolane, N.\n\nDemonstrates how artificial networks integrate spatial and reward information in navigation codes."
   },
@@ -22,15 +37,27 @@
     "highlight": "CosmoFlow is a representation learning model for dark matter simulation data. It employs flow-matching, a state-of-the-art generative modeling approach, to learn low-dimensional representations of high-dimensional dark matter simulations. Compressed representations are 32x smaller than original data while maintaining high-fidelity reconstruction capability and encoding cosmological parameters.",
     "paperLink": "https://arxiv.org/abs/2407.12843",
     "githubLink": "https://github.com/DongXzz/NutriBench",
-    "heroImage": "cosmology/hero.png",
+    "heroImage": "",
     "contactEmail": "skannan@ucsb.edu",
     "team": [
-      {"name": "Sidharth Kannan", "affiliation": "UC Santa Barbara"},
-      {"name": "Tian Qiu", "affiliation": "UC Santa Barbara"},
-      {"name": "Carolina Cuesta-Lazaro", "affiliation": "NSF Institute for AI and Fundamental Interactions"},
-      {"name": "Haewon Jeong", "affiliation": "UC Santa Barbara"}
+      {
+        "name": "Sidharth Kannan",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Tian Qiu",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Carolina Cuesta-Lazaro",
+        "affiliation": "NSF Institute for AI and Fundamental Interactions"
+      },
+      {
+        "name": "Haewon Jeong",
+        "affiliation": "UC Santa Barbara"
+      }
     ],
-    "content": "## The Problem\n\nModern cosmological simulations like AbacusSummit generate petabyte-scale datasets that are extremely expensive to store and analyze. This \"big data problem\" in cosmology creates a significant bottleneck for scientific discovery.\n\nRepresentation learning offers a solution through compact, interpretable dimensional reduction. CosmoFlow addresses this challenge by creating low-dimensional representations that encode essential scientific information while dramatically reducing data size.\n\n## About the Model\n\nCosmoFlow uses a ResNet-based encoder to produce compressed fields and a UNet-based decoder for reconstruction. The model employs flow-matching, which iteratively denoises Gaussian noise to generate clean samples—similar to diffusion models but with improved efficiency.\n\n### Key Components\n\n**ResNet Encoder** - Compresses high-dimensional simulation data into compact latent representations that preserve scientific information.\n\n**UNet Decoder** - Reconstructs full simulation fields from compressed representations with high fidelity and detail preservation.\n\n**Flow Matching** - State-of-the-art generative approach that iteratively refines noise into clean reconstructed samples.\n\n![Generation Process](cosmology/generation_process.png)\n*The generation process: from noise to refined dark matter density field through iterative flow-matching.*\n\n### Progressive Unmasking Strategy\n\nThe model uses temporal masking during training and inference. The compressed field begins fully masked, progressively unmasking as flow-matching advances. This design embeds semantic meaning: different channels correspond to features at specific cosmological scales.\n\n![Scale-Selective Manipulation](cosmology/scale_manipulation.png)\n*Scale-selective manipulation: smoothed reconstructions via low-frequency channel manipulation demonstrate interpretable latent space.*\n\n## Evaluation Results\n\n### Reconstruction Performance\n\nHigh-fidelity reconstructions are achieved with 32x compressed representations. The model captures large-scale structure and fine details, though some deviation occurs in intricate details.\n\n![Reconstruction Comparison](cosmology/reconstructions.png)\n*Original simulation data (left) compared with CosmoFlow reconstruction (right), showing high-fidelity preservation of cosmic structure.*\n\n### Cosmological Parameter Prediction\n\nThe compressed representations encode meaningful physical information, enabling accurate prediction of cosmological parameters with performance comparable to analyzing raw simulation data.\n\n| Method | Input | Ωm Error | σ8 Error |\n|--------|-------|----------|----------|\n| CNN | Raw simulation data | 4.96% | 2.94% |\n| Feed-forward Network | Compressed fields (32x smaller) | 5.24% | 4.03% |\n\n### Synthetic Data Generation\n\nThe model enables interpolation at new cosmological parameter values without running expensive simulations. By averaging compressed fields from two simulations, we can produce intermediate fields comparable to simulations at averaged parameter values.\n\n![Parameter Interpolation](cosmology/interpolation.png)\n*Synthetic data generation through parameter interpolation: generating dark matter fields at intermediate cosmological parameters.*"
+    "content": "## The Problem\n\nModern cosmological simulations like AbacusSummit generate petabyte-scale datasets that are extremely expensive to store and analyze. This \"big data problem\" in cosmology creates a significant bottleneck for scientific discovery.\n\nRepresentation learning offers a solution through compact, interpretable dimensionality reduction. CosmoFlow addresses this challenge by creating low-dimensional representations that encode essential scientific information while dramatically reducing data size.\n\n## About the Model\n\nCosmoFlow uses a ResNet-based encoder to produce compressed fields and a UNet-based decoder for reconstruction. The model employs flow-matching, which iteratively denoises Gaussian noise to generate clean samples—similar to diffusion models but with improved efficiency.\n\n### Key Components\n\n**ResNet Encoder** - Compresses high-dimensional simulation data into compact latent representations that preserve scientific information.\n\n**UNet Decoder** - Reconstructs full simulation fields from compressed representations with high fidelity and detail preservation.\n\n**Flow Matching** - State-of-the-art generative approach that iteratively refines noise into clean reconstructed samples.\n\n![Generation Process](cosmology/generation_process.png)\n*The generation process: from noise to refined dark matter density field through iterative flow-matching.*\n\n### Progressive Unmasking Strategy\n\nThe model uses temporal masking during training and inference. The compressed field begins fully masked, progressively unmasking as flow-matching advances. This design embeds semantic meaning: different channels correspond to features at specific cosmological scales.\n\n![Scale-Selective Manipulation](cosmology/scale_manipulation.png)\n*Scale-selective manipulation: smoothed reconstructions via low-frequency channel manipulation demonstrate interpretable latent space.*\n\n## Evaluation Results\n\n### Reconstruction Performance\n\nHigh-fidelity reconstructions are achieved with 32x compressed representations. The model captures large-scale structure and fine details, though some deviation occurs in intricate details.\n\n![Reconstruction Comparison](cosmology/reconstructions.png)\n*Original simulation data (left) compared with CosmoFlow reconstruction (right), showing high-fidelity preservation of cosmic structure.*\n\n### Cosmological Parameter Prediction\n\nThe compressed representations encode meaningful physical information, enabling accurate prediction of cosmological parameters with performance comparable to analyzing raw simulation data.\n\n| Method | Input | Ωm Error | σ8 Error |\n|--------|-------|----------|----------|\n| CNN | Raw simulation data | 4.96% | 2.94% |\n| Feed-forward Network | Compressed fields (32x smaller) | 5.24% | 4.03% |\n\n### Synthetic Data Generation\n\nThe model enables interpolation at new cosmological parameter values without running expensive simulations. By averaging compressed fields from two simulations, we can produce intermediate fields comparable to simulations at averaged parameter values.\n\n![Parameter Interpolation](cosmology/interpolation.png)\n*Synthetic data generation through parameter interpolation: generating dark matter fields at intermediate cosmological parameters.*"
   },
   {
     "id": "diabetes",
@@ -41,11 +68,26 @@
     "heroImage": "https://images.squarespace-cdn.com/content/v1/6529d70c4ba176269ec562d6/ac9a4641-705d-46b7-b329-221cc33f9b55/bg_trace.png",
     "contactEmail": "dongx1997@ucsb.edu",
     "team": [
-      {"name": "Andong Hua", "affiliation": "UC Santa Barbara"},
-      {"name": "Mehak Preet Dhaliwal", "affiliation": "UC Santa Barbara"},
-      {"name": "Laya Pullela", "affiliation": "UC Santa Barbara"},
-      {"name": "Ryan Burke", "affiliation": "UC Santa Barbara"},
-      {"name": "Yao Qin", "affiliation": "UC Santa Barbara"}
+      {
+        "name": "Andong Hua",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Mehak Preet Dhaliwal",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Laya Pullela",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Ryan Burke",
+        "affiliation": "UC Santa Barbara"
+      },
+      {
+        "name": "Yao Qin",
+        "affiliation": "UC Santa Barbara"
+      }
     ],
     "content": "## The Problem\n\nAccurate carbohydrate estimation is critical for individuals with diabetes who must calculate insulin doses based on meal content. However, nutrition estimation is challenging even for trained professionals, and errors can lead to dangerous blood glucose fluctuations.\n\nCan large language models provide accurate, fast nutrition estimates that improve diabetes management? NutriBench provides the first comprehensive benchmark to answer this question.\n\n## Dataset Overview\n\nNutriBench contains **11,857 human-verified meal descriptions** with macronutrient annotations, representing diverse global dietary patterns.\n\n### Global Coverage\n\nData sourced from dietary intake databases spanning 11 countries: Argentina, Bulgaria, Ethiopia, India, Italy, Mexico, Nigeria, Peru, Philippines, Sri Lanka, and the United States.\n\n### Data Sources\n\n- **What We Eat in America (WWEIA)** - National dietary intake survey\n- **FAO/WHO Gift databases** - Global dietary data from multiple countries\n\nVersion 2 expanded coverage to **24 countries** with improved meal diversity.\n\n## Methodology\n\n### Data Generation Process\n\n1. Meal data extracted from real dietary intake databases\n2. GPT-4o-mini used to generate natural language descriptions\n3. Human verification conducted to eliminate hallucinations\n\n### LLM Evaluation\n\nWe benchmarked **12 models** across different categories:\n\n| Category | Models |\n|----------|--------|\n| Open-source | Llama 3.1 (8B/70B/405B), Llama 3 (8B/70B), Gemma 2 (9B/27B), Qwen 2 (7B/70B) |\n| Closed-source | GPT-4o, GPT-4o mini |\n| Medical-specialized | OpenBioLLM-70B |\n\n### Prompting Strategies\n\nFour prompting approaches were tested:\n\n1. **Baseline** - Standard instructional prompting\n2. **Chain-of-Thought (CoT)** - Step-by-step reasoning\n3. **Retrieval Augmented Generation (RAG)** - Database-enhanced responses\n4. **RAG+CoT** - Combined approach\n\n## Key Results\n\n**GPT-4o with Chain-of-Thought achieved 66.82% accuracy** (absolute error <7g carbohydrates) with a 99.16% answer rate, providing more accurate and faster predictions than professional nutritionists.\n\n### Clinical Impact Simulation\n\nWe assessed real-world health impacts through blood glucose management simulations:\n\n- **44,800 scenarios** simulated using Type 1 diabetes models\n- GPT-4o estimates resulted in **lowest blood glucose risk**\n- Achieved **highest time in safe glucose range** (70-180 mg/dl)\n- **Outperformed nutritionist estimates** in diabetes management simulations\n\n## Recent Updates\n\n- **April 2025:** NutriBench v2 release with 24-country support\n- **March 2025:** SMS/WhatsApp carbohydrate estimation service launched\n- **February 2025:** Accepted at ICLR 2025 conference\n- **October 2024:** Initial NutriBench v1 release"
   }
