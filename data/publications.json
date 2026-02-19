@@ -309,6 +309,18 @@
   ],
   "2026": [
     {
+      "title": "GraphUniverse: Enabling Systematic Evaluation of Inductive Generalization",
+      "authors": "Van Langendonck, L., Bernárdez, G., Miolane, N., Barlet-Ros, P.",
+      "venue": "ICLR 2026",
+      "image": "graphuniverse_enabling_systema_1771533177531.jpg"
+    },
+    {
+      "title": "Unsupervised Cell Segmentation by Fast Gaussian Processes",
+      "authors": "Baracaldo, L., King, B., Yan, H., Lin, Y., Miolane, N., Gu, N.",
+      "venue": "The New England Journal of Statistics in Data Science 2026",
+      "image": "unsupervised_cell_segmentation_1771533219706.jpg"
+    },
+    {
       "title": "SPICE: A Synergistic, Precise, Iterative, and Customizable Image Editing Workflow",
       "authors": "K. Tang, Y. Li, Y. Qin",
       "venue": "NeurIPS Creative AI track, 2025",
