@@ -1,6 +1,12 @@
 {
   "2022": [
     {
+      "title": "Investigating Ensemble Methods for Model Robustness Improvement of Text Classifiers",
+      "authors": "J. Zhao, X. Wang, Y. Qin, J. Chen, K. Chang",
+      "venue": "Findings of EMNLP 2022",
+      "image": ""
+    },
+    {
       "title": "Beyond Adult and COMPAS: Fair Multi-Class Prediction via Information Projection",
       "authors": "W Alghamdi, H Hsu, H Jeong, H Wang, P Michalak, S Asoodeh, F Calmon",
       "venue": "NeurIPS 2022",
