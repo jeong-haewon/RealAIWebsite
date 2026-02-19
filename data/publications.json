@@ -223,6 +223,12 @@
   ],
   "2025": [
     {
+      "title": "SPICE: A Synergistic, Precise, Iterative, and Customizable Image Editing Workflow",
+      "authors": "K. Tang, Y. Li, Y. Qin",
+      "venue": "NeurIPS Creative AI track, 2025",
+      "image": "spice_a_synergistic_precise_it_1771533075720.jpg"
+    },
+    {
       "title": "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs",
       "authors": "A. Hua*, K. Tang*, C. Gu, J. Gu, E. Wong, Y. Qin",
       "venue": "EMNLP 2025",
