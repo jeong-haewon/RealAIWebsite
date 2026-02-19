@@ -232,25 +232,13 @@
       "title": "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs",
       "authors": "A. Hua*, K. Tang*, C. Gu, J. Gu, E. Wong, Y. Qin",
       "venue": "EMNLP 2025",
-      "image": "flaw_or_artifact_rethinking_pr_1771533830413.jpg"
+      "image": "flaw_or_artifact_rethinking.png"
     },
     {
       "title": "DietAI24 as a framework for comprehensive nutrition estimation using multimodal large language models",
       "authors": "R. Yan, H. Luo, J. Lu, D. Liu, H. Posluszny, M. P. Dhaliwal, J. MacLeod, Y. Qin, C. Yang, T. J. Hartman, X. Hu",
       "venue": "Communications Medicine, 2025",
       "image": "dietai24_as_a_framework_for_co_1771534023385.jpg"
-    },
-    {
-      "title": "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs",
-      "authors": "A. Hua*, K. Tang*, C. Gu, J. Gu, E. Wong, Y. Qin",
-      "venue": "EMNLP 2025",
-      "image": "flaw_or_artifact_rethinking_pr_1771533258427.jpg"
-    },
-    {
-      "title": "DietAI24 as a framework for comprehensive nutrition estimation using multimodal large language models",
-      "authors": "R. Yan, H. Luo, J. Lu, D. Liu, H. Posluszny, M. P. Dhaliwal, J. MacLeod, Y. Qin, C. Yang, T. J. Hartman, X. Hu",
-      "venue": "Communications Medicine, 2025",
-      "image": "dietai24_as_a_framework_for_co_1771529658480.jpg"
     },
     {
       "title": "Learning Riemannian Metrics for Interpolating Animations",
@@ -295,12 +283,6 @@
       "image": "weissburg_naacl25.png"
     },
     {
-      "title": "NutriBench: A Dataset for Evaluating Large Language Models in Nutrition Estimation from Meal Descriptions",
-      "authors": "A Hua, MP Dhaliwal, L Pullela, R Burke, Y Qin",
-      "venue": "ICLR 2025",
-      "image": "hua_iclr25.png"
-    },
-    {
       "title": "Can Multimodal Large Language Models Truly Perform Multimodal In-Context Learning?",
       "authors": "S Chen, Z Han, B He, J Liu, M Buckley, Y Qin, P Torr, V Tresp, J Gu",
       "venue": "WACV 2025",
@@ -311,12 +293,6 @@
       "authors": "A Bertics, E Chrastil, N Miolane, J Carlson",
       "venue": "COSYNE 2025",
       "image": "bertics_cosyne25.png"
-    },
-    {
-      "title": "Can Multimodal Large Language Models Truly Perform Multimodal In-Context Learning?",
-      "authors": "S Chen, Z Han, B He, J Liu, M Buckley, Y Qin, P Torr, V Tresp, J Gu",
-      "venue": "WACV 2025",
-      "image": "chen_wacv25.png"
     },
     {
       "title": "Beyond Euclid: An Illustrated Guide to Modern Machine Learning with Geometric, Topological, and Algebraic Structures",
