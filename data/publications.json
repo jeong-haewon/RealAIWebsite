@@ -261,6 +261,12 @@
   ],
   "2026": [
     {
+      "title": "Enhancing Hallucination Detection through Noise Injection",
+      "authors": "L. Liu, R. Pourreza, S. Panchal, A. Bhattacharyya, Y. Qin, R. Memisevic",
+      "venue": "ICLR 2026",
+      "image": "enhancing_hallucination_detect_1771483547699.jpg"
+    },
+    {
       "title": "When Machine Learning Gets Personal: Evaluating Prediction and Explanation",
       "authors": "L Cornelis, G Bernardez, H Jeong, N Miolane",
       "venue": "ICLR 2026",
