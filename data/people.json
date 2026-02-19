@@ -230,20 +230,21 @@
       "description": "",
       "website": ""
     },
-    {
-      "name": "Hongjun Zhu",
-      "title": "",
-      "image": "hongjun_zhu.webp",
-      "description": "",
-      "website": "",
-      "advisor": ""
-    }
+    
   ],
   "advisors": [
     {
       "name": "Umesh Mishra",
       "title": "",
       "image": "umesh_mishra.webp",
+      "description": "",
+      "website": "",
+      "advisor": ""
+    }, 
+    {
+      "name": "Hongjun Zhu",
+      "title": "",
+      "image": "hongjun_zhu.webp",
       "description": "",
       "website": "",
       "advisor": ""
