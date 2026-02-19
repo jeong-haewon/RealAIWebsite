@@ -231,5 +231,14 @@
       "website": ""
     }
   ],
-  "advisors": []
+  "advisors": [
+    {
+      "name": "Hongjun Zhu",
+      "title": "",
+      "image": "hongjun_zhu.webp",
+      "description": "",
+      "website": "",
+      "advisor": ""
+    }
+  ]
 }
