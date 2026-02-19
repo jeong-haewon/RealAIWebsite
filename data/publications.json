@@ -113,6 +113,12 @@
   ],
   "2024": [
     {
+      "title": "Creative and Context-Aware Translation of East Asian Idioms with GPT-4",
+      "authors": "K. Tang, P. Song, Y. Qin, X. Yan",
+      "venue": "Findings of EMNLP 2024",
+      "image": "creative_and_contextaware_tran_1771484281629.jpg"
+    },
+    {
       "title": "The Selective G-Bispectrum and its Inversion: Applications to G-Invariant Networks",
       "authors": "S Mataigne, J Mathe, S Sanborn, C Hillar, N Miolane",
       "venue": "NeurIPS 2024",
