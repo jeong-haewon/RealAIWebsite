@@ -223,10 +223,10 @@
   ],
   "2025": [
     {
-      "title": "SPICE: A Synergistic, Precise, Iterative, and Customizable Image Editing Workflow",
-      "authors": "K. Tang, Y. Li, Y. Qin",
-      "venue": "NeurIPS Creative AI track, 2025",
-      "image": "spice_a_synergistic_precise_it_1771533167037.jpg"
+      "title": "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs",
+      "authors": "A. Hua*, K. Tang*, C. Gu, J. Gu, E. Wong, Y. Qin",
+      "venue": "EMNLP 2025",
+      "image": "flaw_or_artifact_rethinking_pr_1771533830413.jpg"
     },
     {
       "title": "Variation in Hypoglycemia Risk with Real-World Physical Activity in Adults with Type 1 Diabetes: Insights from the Type 1 Diabetes Exercise Initiative.",
