@@ -305,6 +305,11 @@
   ],
   "2026": [
     {
+      "title": "SPICE: A Synergistic, Precise, Iterative, and Customizable Image Editing Workflow",
+      "authors": "K. Tang, Y. Li, Y. Qin",
+      "venue": "NeurIPS Creative AI track, 2025",
+      "image": "spice_a_synergistic_precise_it_1771483874300.jpg"
+    },
       "title": "Enhancing Hallucination Detection through Noise Injection",
       "authors": "L. Liu, R. Pourreza, S. Panchal, A. Bhattacharyya, Y. Qin, R. Memisevic",
       "venue": "ICLR 2026",
