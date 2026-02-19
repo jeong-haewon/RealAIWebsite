@@ -45,6 +45,12 @@
   ],
   "2023": [
     {
+      "title": "Improving Classifier Robustness through Active Generation of Pairwise Counterfactuals",
+      "authors": "A. Balashankar, X. Wang, Y. Qin, N. Thain, B. Packer, E. Chi, A. Beutel.",
+      "venue": "Findings of EMNLP 2023",
+      "image": ""
+    },
+    {
       "title": "A General Framework for Robust G-Invariance in G-Equivariant Networks",
       "authors": "S Sanborn, N Miolane",
       "venue": "NeurIPS 2023",
@@ -118,6 +124,27 @@
     }
   ],
   "2024": [
+    {
+      "title": "Creative and Context-Aware Translation of East Asian Idioms with GPT-4",
+      "authors": "K. Tang, P. Song, Y. Qin, X. Yan",
+      "venue": "Findings of EMNLP 2024",
+      "image": "creative_and_contextaware_tran_1771484281629.jpg"
+    },
+      "title": "Automated Adversarial Discovery for Safety Classifiers",
+      "authors": "Y. Lal, P. Lahoti, A. Sinha, Y. Qin, A. Balashankar",
+      "venue": "TrustNLP at NAACL",
+      "image": ""
+    },
+      "title": "A Minimalist Prompt for Zero-Shot Policy Learning",
+      "authors": "M. Song, X. Wang, T. Biradar, Y. Qin and M. Chandraker.",
+      "venue": "RSS 2024",
+      "image": ""
+    },
+      "title": "Training Deep Boltzmann Networks with Sparse Ising Machines",
+      "authors": "S. Niazi, N. Aadit, M. Mohseni, S. Chowdhury, Y. Qin, K. Camsari.",
+      "venue": "Nature Electronics, 2024",
+      "image": ""
+    },
     {
       "title": "The Selective G-Bispectrum and its Inversion: Applications to G-Invariant Networks",
       "authors": "S Mataigne, J Mathe, S Sanborn, C Hillar, N Miolane",
@@ -193,6 +220,17 @@
   ],
   "2025": [
     {
+      "title": "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs",
+      "authors": "A. Hua*, K. Tang*, C. Gu, J. Gu, E. Wong, Y. Qin",
+      "venue": "EMNLP 2025",
+      "image": ""
+    },
+      "title": "DietAI24 as a framework for comprehensive nutrition estimation using multimodal large language models",
+      "authors": "R. Yan, H. Luo, J. Lu, D. Liu, H. Posluszny, M. P. Dhaliwal, J. MacLeod, Y. Qin, C. Yang, T. J. Hartman, X. Hu",
+      "venue": "Communications Medicine, 2025",
+      "image": ""
+    },
+    {
       "title": "Learning Riemannian Metrics for Interpolating Animations",
       "authors": "S Kushner, V Modi, N Miolane",
       "venue": "GSI 2025",
@@ -266,6 +304,17 @@
     }
   ],
   "2026": [
+    {
+      "title": "SPICE: A Synergistic, Precise, Iterative, and Customizable Image Editing Workflow",
+      "authors": "K. Tang, Y. Li, Y. Qin",
+      "venue": "NeurIPS Creative AI track, 2025",
+      "image": "spice_a_synergistic_precise_it_1771483874300.jpg"
+    },
+      "title": "Enhancing Hallucination Detection through Noise Injection",
+      "authors": "L. Liu, R. Pourreza, S. Panchal, A. Bhattacharyya, Y. Qin, R. Memisevic",
+      "venue": "ICLR 2026",
+      "image": "enhancing_hallucination_detect_1771483547699.jpg"
+    },
     {
       "title": "When Machine Learning Gets Personal: Evaluating Prediction and Explanation",
       "authors": "L Cornelis, G Bernardez, H Jeong, N Miolane",
