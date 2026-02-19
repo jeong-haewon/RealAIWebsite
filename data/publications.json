@@ -277,10 +277,10 @@
       "image": "liu_cvpr25.png"
     },
     {
-      "title": "Gone With the Bits: Revealing Racial Bias in Low-Rate Neural Compression for Facial Images",
-      "authors": "T Qiu, A Nichani, R Tadayontahmasebi, H Jeong",
-      "venue": "FAccT 2025",
-      "image": "qiu_facct25.png"
+      "title": "NutriBench: A Dataset for Evaluating Large Language Models in Nutrition Estimation from Meal Descriptions",
+      "authors": "A Hua, MP Dhaliwal, L Pullela, R Burke, Y Qin",
+      "venue": "ICLR 2025",
+      "image": "nutribench_a_dataset_for_evalu_1771534309348.jpg"
     },
     {
       "title": "LLMs are Biased Teachers: Evaluating LLM Bias in Personalized Education",
