@@ -187,6 +187,12 @@
   ],
   "2025": [
     {
+      "title": "DietAI24 as a framework for comprehensive nutrition estimation using multimodal large language models",
+      "authors": "R. Yan, H. Luo, J. Lu, D. Liu, H. Posluszny, M. P. Dhaliwal, J. MacLeod, Y. Qin, C. Yang, T. J. Hartman, X. Hu",
+      "venue": "Communications Medicine, 2025",
+      "image": ""
+    },
+    {
       "title": "Learning Riemannian Metrics for Interpolating Animations",
       "authors": "S Kushner, V Modi, N Miolane",
       "venue": "GSI 2025",
