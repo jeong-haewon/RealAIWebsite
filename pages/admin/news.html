@@ -502,7 +502,7 @@
                 await github.getDefaultBranch();
 
                 updateSubmitStep('branch', 'active');
-                const branchName = `content/add-news-${item.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                const branchName = `content/add-news-${item.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0, 20)}-${Date.now()}`;
                 await github.createBranch(branchName);
                 updateSubmitStep('branch', 'done');
 
@@ -580,7 +580,7 @@
                 await github.getDefaultBranch();
 
                 updateSubmitStep('branch', 'active');
-                const branchName = `content/update-news-${item.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                const branchName = `content/update-news-${item.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0, 20)}-${Date.now()}`;
                 await github.createBranch(branchName);
                 updateSubmitStep('branch', 'done');
 
@@ -654,7 +654,7 @@
                 await github.getDefaultBranch();
 
                 updateSubmitStep('branch', 'active');
-                const branchName = `content/delete-news-${existingItem.title.toLowerCase().replace(/\s+/g, '-').substring(0, 20)}-${Date.now()}`;
+                const branchName = `content/delete-news-${existingItem.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0, 20)}-${Date.now()}`;
                 await github.createBranch(branchName);
                 updateSubmitStep('branch', 'done');
 

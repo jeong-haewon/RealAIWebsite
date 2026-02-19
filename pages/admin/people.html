@@ -733,7 +733,7 @@
 
                 // Create branch
                 updateSubmitStep('branch', 'active');
-                const branchName = `content/add-person-${person.name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`;
+                const branchName = `content/add-person-${person.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0, 20)}-${Date.now()}`;
                 await github.createBranch(branchName);
                 updateSubmitStep('branch', 'done');
 

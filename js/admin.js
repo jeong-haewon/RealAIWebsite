@@ -6,8 +6,8 @@
 class GitHubAdmin {
     constructor() {
         this.token = localStorage.getItem('github_token') || '';
-        this.repo = 'RealAIWebsite'; // Update this to match your repo name
-        this.owner = ''; // Will be set from token
+        this.repo = 'RealAIWebsite';
+        this.owner = 'jeong-haewon'; // Hardcoded to ensure PRs go to the main repo
         this.baseRef = 'main';
     }
 
@@ -49,7 +49,7 @@ class GitHubAdmin {
     }
 
     async getRepoInfo() {
-        // Try to find the repo - first check if user owns it, then check orgs
+        // Always use the hardcoded owner/repo to ensure PRs go to the main repo
         const response = await fetch(`https://api.github.com/repos/${this.owner}/${this.repo}`, {
             headers: {
                 'Authorization': `token ${this.token}`,
@@ -59,24 +59,6 @@ class GitHubAdmin {
 
         if (response.ok) {
             return await response.json();
-        }
-
-        // Try to find in user's repos
-        const reposResponse = await fetch('https://api.github.com/user/repos?per_page=100', {
-            headers: {
-                'Authorization': `token ${this.token}`,
-                'Accept': 'application/vnd.github.v3+json'
-            }
-        });
-
-        if (reposResponse.ok) {
-            const repos = await reposResponse.json();
-            const found = repos.find(r => r.name === this.repo || r.name.toLowerCase() === this.repo.toLowerCase());
-            if (found) {
-                this.owner = found.owner.login;
-                this.repo = found.name;
-                return found;
-            }
         }
 
         return null;

@@ -409,8 +409,8 @@ nav {
     align-items: start;
 }
 
-.about-header h2 {
-    margin-bottom: 0;
+#about h2 {
+    margin-bottom: 1.5rem;
 }
 
 .about-header .about-stats {
@@ -424,7 +424,7 @@ nav {
 }
 
 .about-text {
-    margin-top: 1.5rem;
+    margin-top: 0;
     margin-bottom: 2.5rem;
 }
 
