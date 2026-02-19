@@ -231,5 +231,14 @@
       "website": ""
     }
   ],
-  "advisors": []
+  "advisors": [
+    {
+      "name": "Umesh Mishra",
+      "title": "",
+      "image": "umesh_mishra.webp",
+      "description": "",
+      "website": "",
+      "advisor": ""
+    }
+  ]
 }
