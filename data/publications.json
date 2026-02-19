@@ -125,6 +125,11 @@
   ],
   "2024": [
     {
+      "title": "A Minimalist Prompt for Zero-Shot Policy Learning",
+      "authors": "M. Song, X. Wang, T. Biradar, Y. Qin and M. Chandraker.",
+      "venue": "RSS 2024",
+      "image": ""
+    },
       "title": "Training Deep Boltzmann Networks with Sparse Ising Machines",
       "authors": "S. Niazi, N. Aadit, M. Mohseni, S. Chowdhury, Y. Qin, K. Camsari.",
       "venue": "Nature Electronics, 2024",
