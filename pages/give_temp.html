@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give - REAL AI Lab</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .give-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .give-hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .give-hero .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .give-section {
+            margin-bottom: 3rem;
+        }
+
+        .give-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--sky-blue);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .impact-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .impact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .impact-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .giving-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .giving-method {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .giving-method:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .giving-method .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.25rem;
+            color: var(--sky-blue);
+        }
+
+        .giving-method h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .giving-method p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .giving-method .btn {
+            width: 100%;
+        }
+
+        .giving-tiers {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .giving-tier {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .giving-tier:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .giving-tier.featured {
+            border-color: var(--sky-blue);
+            background: linear-gradient(135deg, #f8fbfd 0%, #ffffff 100%);
+        }
+
+        .tier-amount {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--sky-blue);
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+
+        .tier-content {
+            flex: 1;
+        }
+
+        .tier-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .give-hero .tagline {
+                font-size: 1.25rem;
+            }
+
+            .giving-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .giving-tier {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .tier-amount {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-group">
+                <a href="https://www.ucsb.edu" target="_blank" class="ucsb-logo">
+                    <img src="../assets/images/logo/UC_Santa_Barbara_Wordmark_Navy_RGB.png" alt="UC Santa Barbara">
+                </a>
+                <a href="../index.html" class="logo">REAL AI</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="people.html">People</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="give.html" class="active">Give</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Support REAL AI</h1>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="give-hero">
+                    <p class="tagline">Accelerating Scientific Discovery Through AI</p>
+                    <p class="description">
+                        Your support enables us to push the boundaries of AI-powered research, from understanding the human brain to modeling complex biological systems. Together, we can transform how science is done and make discoveries that benefit humanity.
+                    </p>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="https://give.ucsb.edu/real-ai" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Give Today</a>
+                    </div>
+                </div>
+
+                <div class="give-section">
+                    <h2 class="give-section-title">Support Our Scientific Revolution at REAL AI</h2>
+                    <div class="giving-tiers">
+                        <div class="giving-tier">
+                            <div class="tier-amount">$20,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Friend of REAL AI</div>
+                                <p class="tier-description">Enables sponsorship of a student research travel award, covering conference participation or industry visit for one UCSB AI student.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier">
+                            <div class="tier-amount">$50,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Outreach Expansion Partner</div>
+                                <p class="tier-description">Expands the Girls' AI Bootcamp by supporting additional student cohorts, instructional staff, and curriculum development, broadening access to high-quality AI education for young women.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier">
+                            <div class="tier-amount">$100,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Research Accelerator</div>
+                                <p class="tier-description">Funds a major upgrade to REAL AI's research compute infrastructure, providing high-performance GPUs, storage, and cloud credits to accelerate data-intensive AI research across multiple student projects.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier">
+                            <div class="tier-amount">$200,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Fellowship Foundership</div>
+                                <p class="tier-description">Endows a REAL AI PhD Fellowship in your name for two consecutive years of doctoral support.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier featured">
+                            <div class="tier-amount">$500,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Impact Investor</div>
+                                <p class="tier-description">Establishes a named AI Research Seed Fund to catalyze multiple early-stage student and faculty projects.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier">
+                            <div class="tier-amount">$1,000,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Expansion Accelerator</div>
+                                <p class="tier-description">Establishes the REAL AI Visiting Scholars Program, enabling the Institute to host leading AI researchers from academia, national labs, and industry for extended residencies that catalyze new collaborations and research directions.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier">
+                            <div class="tier-amount">$5,000,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Chaired Professorship</div>
+                                <p class="tier-description">Endows a Chaired Professorship in AI — securing faculty leadership and research excellence in perpetuity.</p>
+                            </div>
+                        </div>
+
+                        <div class="giving-tier featured">
+                            <div class="tier-amount">$10,000,000</div>
+                            <div class="tier-content">
+                                <div class="tier-name">Institutional Founding Partner</div>
+                                <p class="tier-description">Establishes a long-term Center for REAL AI at University of California, Santa Barbara, positioning UCSB as a global leader in AI-for-Science research.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="give-section">
+                    <h2 class="give-section-title">Your Impact</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7;">
+                        Contributions to REAL AI directly fund cutting-edge research and support the next generation of scientists. Your generosity helps us:
+                    </p>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <h3>Advance Research</h3>
+                            <p>Fund pioneering projects in neuroscience, healthcare AI, and geometric deep learning that address critical scientific challenges.</p>
+                        </div>
+                        <div class="impact-card">
+                            <h3>Train Future Scientists</h3>
+                            <p>Provide fellowships and research opportunities for graduate students and postdoctoral researchers pursuing careers in AI for science.</p>
+                        </div>
+                        <div class="impact-card">
+                            <h3>Build Digital Twins</h3>
+                            <p>Support the development of AI-powered digital twins of complex systems—from the brain to the pancreas to the universe.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="give-section">
+                    <h2 class="give-section-title">How to Give</h2>
+                    <div class="giving-methods">
+                        <div class="giving-method">
+                            <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="6" y="12" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M6 18h36" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 28h8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 32h12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <h3>Give Online</h3>
+                            <p>Make a secure online donation through the UC Santa Barbara giving portal. Select "REAL AI" as your designation.</p>
+                            <a href="https://give.ucsb.edu/real-ai" target="_blank" class="btn" style="background: white; color: var(--sky-blue); border: 2px solid var(--sky-blue);">Donate Now</a>
+                        </div>
+                        <div class="giving-method">
+                            <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="6" width="32" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 14h20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 22h20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 30h12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <h3>Give by Mail</h3>
+                            <p>Send a check payable to "UC Santa Barbara Foundation" with "REAL AI" in the memo line.</p>
+                            <div style="text-align: left; font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; line-height: 1.6;">
+                                <strong>Mail to:</strong><br>
+                                UC Santa Barbara Foundation<br>
+                                Attn: REAL AI<br>
+                                4219 Cheadle Hall<br>
+                                Santa Barbara, CA 93106-2013
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="give-section">
+                    <h2 class="give-section-title">Other Ways to Support</h2>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <h3>Corporate Partnerships</h3>
+                            <p>Partner with us on sponsored research, collaborative projects, or technology transfer initiatives.</p>
+                        </div>
+                        <div class="impact-card">
+                            <h3>Planned Giving</h3>
+                            <p>Include REAL AI in your estate plans to create a lasting legacy supporting AI research for generations.</p>
+                        </div>
+                        <div class="impact-card">
+                            <h3>In-Kind Donations</h3>
+                            <p>Contribute computing resources, datasets, or equipment to accelerate our research capabilities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <h3>Questions About Giving?</h3>
+                    <p>We're happy to discuss how your gift can make the greatest impact.</p>
+                    <p>Contact us at <a href="mailto:ai@ece.ucsb.edu">ai@ece.ucsb.edu</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">REAL AI</span>
+                    <p>Reliable, Efficient, and Aligned AI</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="news.html">News</a>
+                    <a href="people.html">People</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="events.html">Events</a>
+                    <a href="give.html">Give</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 REAL AI, UC Santa Barbara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
