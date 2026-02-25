@@ -1,5 +1,12 @@
 [
     {
+        "title": "LEAP: A Rapid Neural Surrogate of Multi-Fluid MHD at Europa",
+        "speaker": "Sachin A. Reddy",
+        "affiliation": "NASA JPL",
+        "date": "2026-02-27",
+        "image": "sachin_a_reddy.jpg"
+    },
+    {
         "title": "Koopman Operator and Learning of Dynamical Systems and Beyond",
         "speaker": "Igor Mezić",
         "affiliation": "Department of Mechanical Engineering, UCSB",
