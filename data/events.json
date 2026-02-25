@@ -1,5 +1,12 @@
 [
     {
+        "title": "Parameter identifiability in RNN models of neural computations",
+        "speaker": "Fatih Dinç",
+        "affiliation": "Kavli Institute for Theoretical Physics, UCSB",
+        "date": "2026-01-30",
+        "image": "fatih_din.jpg"
+    },
+    {
         "title": "LEAP: A Rapid Neural Surrogate of Multi-Fluid MHD at Europa",
         "speaker": "Sachin A. Reddy",
         "affiliation": "NASA JPL",
