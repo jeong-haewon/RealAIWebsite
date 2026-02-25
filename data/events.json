@@ -1,5 +1,12 @@
 [
     {
+        "title": "Koopman Operator and Learning of Dynamical Systems and Beyond",
+        "speaker": "Igor Mezić",
+        "affiliation": "Department of Mechanical Engineering, UCSB",
+        "date": "2026-02-06",
+        "image": "igor_mezi.jpg"
+    },
+    {
         "title": "Speaking the Neural Code",
         "speaker": "Vedang Lad",
         "affiliation": "Stanford University",
