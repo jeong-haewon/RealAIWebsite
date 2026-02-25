@@ -21,13 +21,6 @@
         "image": "igor_mezi.jpg"
     },
     {
-        "title": "Biologically Plausible Computing: Navigating Energy Landscapes",
-        "speaker": "Francesco Bullo",
-        "affiliation": "Department of Mechanical Engineering, UCSB",
-        "date": "2026-01-30",
-        "image": "francesco_bullo.jpg"
-    },
-    {
         "title": "Vector Search: High-Throughput and Robust Query Processing and Modern Benchmarks",
         "speaker": "Teemu Roos",
         "affiliation": "Department of Computer Science, University of Helsinki",
