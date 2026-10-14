@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/images/logo/REAL_AI_LOGO_Square.png">
+    <title>Careers - REAL AI Lab</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .careers-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .careers-intro .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .careers-intro .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .careers-section {
+            margin-bottom: 3rem;
+        }
+
+        .careers-section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--sky-blue);
+        }
+
+        .position-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .position-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .position-card:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .position-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .position-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .position-card .view-link {
+            flex-shrink: 0;
+            color: var(--sky-blue);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .job-posting {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            scroll-margin-top: 100px;
+        }
+
+        .job-posting h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .job-posting .position-meta {
+            margin-bottom: 2rem;
+        }
+
+        .job-posting h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem;
+        }
+
+        .job-posting p,
+        .job-posting li {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .job-posting p {
+            margin-bottom: 1rem;
+        }
+
+        .job-posting strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .job-posting ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-posting li {
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-box h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem;
+        }
+
+        .contact-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .careers-intro .tagline {
+                font-size: 1.25rem;
+            }
+
+            .position-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .job-posting {
+                padding: 1.5rem;
+            }
+
+            .job-posting h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-group">
+                <a href="https://www.ucsb.edu" target="_blank" class="ucsb-logo">
+                    <img src="../assets/images/logo/UC_Santa_Barbara_Wordmark_Navy_RGB.png" alt="UC Santa Barbara">
+                </a>
+                <a href="../index.html" class="logo">REAL AI</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="people.html">People</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="careers.html" class="active">Careers</a></li>
+                <li><a href="give.html">Give</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Careers</h1>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="careers-intro">
+                    <p class="tagline">Join Us in Building AI for Science</p>
+                    <p class="description">
+                        We're seeking passionate researchers to help shape the future of AI-powered scientific discovery at UC Santa Barbara.
+                    </p>
+                </div>
+
+                <div class="careers-section">
+                    <h2 class="careers-section-title">Open Positions</h2>
+                    <div class="position-list">
+                        <a href="#postdoc-autonomous-labs" class="position-card">
+                            <div>
+                                <h3>Postdoctoral Researcher in AI for Autonomous Laboratories</h3>
+                                <p class="position-meta">Postdoc &middot; Programmable Cloud Laboratory (PCL) &middot; UC Santa Barbara &middot; Full consideration by Nov 15, 2026</p>
+                            </div>
+                            <span class="view-link">View posting &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="careers-section">
+                    <article id="postdoc-autonomous-labs" class="job-posting">
+                        <h2>Postdoctoral Researcher in AI for Autonomous Laboratories</h2>
+                        <p class="position-meta">Postdoc &middot; Programmable Cloud Laboratory (PCL) &middot; UC Santa Barbara</p>
+
+                        <p>
+                            <strong>REAL AI at UC Santa Barbara</strong> is seeking a postdoctoral researcher to help build the AI systems that will power the next generation of autonomous laboratories.
+                        </p>
+                        <p>
+                            This position is part of UCSB&rsquo;s <strong>Programmable Cloud Laboratory (PCL)</strong> effort, a major NSF-supported initiative connected to a nationwide network of 20 remotely accessible laboratory nodes. UCSB is a leading institution in materials research, with world-class facilities, experimental expertise, and substantial laboratory infrastructure already in place. Our goal is to advance the frontier of <strong>AI for autonomous laboratories</strong>.
+                        </p>
+                        <p>
+                            The postdoctoral researcher will work at the intersection of <strong>AI, chemistry, materials science, robotics, and scientific software</strong>, developing intelligent systems that can interact with experimental laboratories, reason over scientific data, and help determine what experiments should happen next. The work will have access to experimental data and capabilities that are rarely available to AI researchers, including data generated through automated <strong>polymer synthesis and characterization</strong>.
+                        </p>
+
+                        <h3>Who we are looking for</h3>
+                        <p>
+                            The ideal candidate has a background in <strong>chemistry, materials science, chemical engineering, or a related scientific field</strong>, together with strong fluency in modern AI and machine learning.
+                        </p>
+                        <p>
+                            We are equally interested in exceptional candidates from <strong>AI/ML or computer science</strong> who are deeply motivated to learn chemistry and materials science and engage closely with experimental research.
+                        </p>
+                        <p>
+                            More important than having worked in exactly the right subfield is the ability and willingness to learn quickly, cross disciplinary boundaries, and communicate effectively with researchers from very different backgrounds.
+                        </p>
+                        <p>Experience in one or more of the following areas is especially valuable:</p>
+                        <ul>
+                            <li>Scientific foundation models;</li>
+                            <li>Multimodal machine learning;</li>
+                            <li>LLM agents or other agentic AI systems;</li>
+                            <li>Large-scale or distributed model training;</li>
+                            <li>Generative models;</li>
+                            <li><strong>Data-efficient machine learning, including Gaussian processes, Bayesian optimization, and active learning;</strong></li>
+                            <li>Chemistry lab experience.</li>
+                        </ul>
+
+                        <h3>Why this position</h3>
+                        <p>
+                            This is an opportunity to help shape a new national infrastructure for AI-driven scientific discovery. This role offers strong visibility through a nationwide 20-node PCL network and close collaboration with leading scientists in chemistry and materials science at UCSB. You will have access to exceptional facilities and unique experimental data, creating opportunities for both high-impact AI research and scientific publications.
+                        </p>
+                        <p>
+                            The position also offers substantial research freedom. We are looking for someone who wants to identify important problems, develop ambitious ideas, and help define what AI for autonomous laboratories should become. We are looking for a researcher who is excited to help build that future.
+                        </p>
+
+                        <div class="contact-box">
+                            <h3>Interested?</h3>
+                            <p>Submit CV + Cover letter to <a href="mailto:ai@ece.ucsb.edu">ai@ece.ucsb.edu</a> by <strong>November 15th, 2026</strong>, to receive full consideration. Applications will be accepted until the position is filled.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">REAL AI</span>
+                    <p>Reliable, Efficient, and Aligned AI</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="news.html">News</a>
+                    <a href="people.html">People</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="events.html">Events</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="give.html">Give</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 REAL AI, UC Santa Barbara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
