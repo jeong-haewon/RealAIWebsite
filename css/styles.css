@@ -398,6 +398,11 @@ nav {
     margin-bottom: 3.5rem;
 }
 
+.section-intro .card-link {
+    margin-top: 1rem;
+    color: var(--sky-blue);
+}
+
 /* ============================================
    About Section
    ============================================ */
