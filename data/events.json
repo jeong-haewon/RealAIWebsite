@@ -1,5 +1,26 @@
 [
     {
+        "title": "From Ising Machines to Generative AI: A Probabilistic Computing Perspective",
+        "speaker": "Kerem Camsari",
+        "affiliation": "Department of Electrical & Computer Engineering, UCSB",
+        "date": "2026-10-30",
+        "image": "kerem_camsari_2026.jpg"
+    },
+    {
+        "title": "Predictive world models through physical dynamics",
+        "speaker": "William Chapman",
+        "affiliation": "Senior Scientist, Sandia National Laboratories",
+        "date": "2026-10-23",
+        "image": "william_chapman.jpg"
+    },
+    {
+        "title": "Loyalty over Honesty: Relationship-Driven Truth Omission as a Safety Failure in Multi-Agent LLMs",
+        "speaker": "Barışcan Kurtkaya",
+        "affiliation": "Geometric Intelligence Lab, Department of Electrical & Computer Engineering, UCSB",
+        "date": "2026-10-16",
+        "image": "bariscan_kurtkaya.jpg"
+    },
+    {
         "title": "Neural scaling universality: Emergent power laws with robust exponents",
         "speaker": "Jeff Gore",
         "affiliation": "Department of Physics, MIT",
