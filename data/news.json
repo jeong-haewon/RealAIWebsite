@@ -1,6 +1,13 @@
 {
   "news": [
     {
+      "title": "UCSB to Lead National Cloud Laboratory for Advanced Materials",
+      "date": "Jul 2026",
+      "content": "UCSB has been selected to lead the Computation-Optimized Automated Soft materials Technology Programmable Cloud Laboratory, or COAST PCL, one of twenty remotely accessible and interconnected research nodes supported by the National Science Foundation as part of a newly announced national network of programmable cloud laboratories. Through the NSF’s PCL Test Bed Initiative, UCSB will receive $20 million over four years to create a national resource for automated polymer and soft-materials research.",
+      "link": "https://engineering.ucsb.edu/news/COAST-PCL-NSF",
+      "image": "ucsb_to_lead_national_cloud_la_1793723388800.jpg"
+    },
+    {
       "title": "UCSB Research Collaboration on Brain Sex Differences Featured in Nature",
       "date": "Feb 2026",
       "content": "UC Santa Barbara researchers, Emily Jacobs and Nina Miolane, have made a major breakthrough in understanding how the human brain diverges between the sexes, a study that has now been featured in Nature. The research, titled \"The progression of sex differences in brain networks across the lifespan,\" reveals that while boys and girls start with remarkably similar brain structures, a profound divergence occurs during the onset of puberty – shaping the brain's functional and structural networks well into adulthood.",
