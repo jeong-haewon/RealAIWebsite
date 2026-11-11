@@ -309,6 +309,12 @@
   ],
   "2026": [
     {
+      "title": "Selective Disk Bispectrum: A Complete and Rotation Invariant Image Descriptor | NeurIPS 2026",
+      "authors": "A Myers Lantow, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "selective_disk_bispectrum_a_co_1794375458654.jpg"
+    },
+    {
       "title": "HOPSE: Scalable Higher-Order Positional and Structural Encoder for Combinatorial Representations",
       "authors": "G Bernárdez*, M Montagna*, L Van Langendonck*, M Carrasco, A Akbari, L Cornelis, M Papillon, P Barlet-Ros, L Telyatnikov**, N Miolane**",
       "venue": "NeurIPS 2026",
