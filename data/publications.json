@@ -309,6 +309,12 @@
   ],
   "2026": [
     {
+      "title": "OgBench: A Framework for Evaluating Graph Neural Networks on Omics Data",
+      "authors": "L Cornelis, J Mathe, L Van Langendonck, G Bernárdez, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "ogbench_a_framework_for_evalua_1794375563348.jpg"
+    },
+    {
       "title": "Selective Disk Bispectrum: A Complete and Rotation Invariant Image Descriptor | NeurIPS 2026",
       "authors": "A Myers Lantow, N Miolane",
       "venue": "NeurIPS 2026",
