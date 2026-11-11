@@ -309,6 +309,12 @@
   ],
   "2026": [
     {
+      "title": "Synaptic Strength Controls Trainability and Structural Stability in Rank-Deficient RNNs",
+      "authors": "F Dinc*, E de Ponnat*, H Weyer, Y Guerra, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "synaptic_strength_controls_tra_1794375215670.jpg"
+    },
+    {
       "title": "Sequential Group Composition: A Window into the Mechanics of Deep Learning",
       "authors": "G Luca Marchetti, D Kunin, A Myers, F Acosta, N Miolane",
       "venue": "ICML 2026",
