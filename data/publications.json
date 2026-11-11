@@ -309,6 +309,42 @@
   ],
   "2026": [
     {
+      "title": "bispectrum: Selective G-Bispectra Made Practical",
+      "authors": "J Mathe, A Myers, S Mataigne, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "bispectrum_selective_gbispectr_1794375628481.jpg"
+    },
+    {
+      "title": "OgBench: A Framework for Evaluating Graph Neural Networks on Omics Data",
+      "authors": "L Cornelis, J Mathe, L Van Langendonck, G Bernárdez, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "ogbench_a_framework_for_evalua_1794375563348.jpg"
+    },
+    {
+      "title": "Selective Disk Bispectrum: A Complete and Rotation Invariant Image Descriptor",
+      "authors": "A Myers Lantow, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "selective_disk_bispectrum_a_co_1794375458654.jpg"
+    },
+    {
+      "title": "HOPSE: Scalable Higher-Order Positional and Structural Encoder for Combinatorial Representations",
+      "authors": "G Bernárdez*, M Montagna*, L Van Langendonck*, M Carrasco, A Akbari, L Cornelis, M Papillon, P Barlet-Ros, L Telyatnikov**, N Miolane**",
+      "venue": "NeurIPS 2026",
+      "image": "hopse_scalable_higherorder_pos_1794375365144.jpg"
+    },
+    {
+      "title": "Synaptic Strength Controls Trainability and Structural Stability in Rank-Deficient RNNs",
+      "authors": "F Dinc*, E de Ponnat*, H Weyer, Y Guerra, N Miolane",
+      "venue": "NeurIPS 2026",
+      "image": "synaptic_strength_controls_tra_1794375215670.jpg"
+    },
+    {
+      "title": "Sequential Group Composition: A Window into the Mechanics of Deep Learning",
+      "authors": "G Luca Marchetti, D Kunin, A Myers, F Acosta, N Miolane",
+      "venue": "ICML 2026",
+      "image": "sequential_group_composition_a_1794375099106.jpg"
+    },
+    {
       "title": "GraphUniverse: Enabling Systematic Evaluation of Inductive Generalization",
       "authors": "Van Langendonck, L., Bernárdez, G., Miolane, N., Barlet-Ros, P.",
       "venue": "ICLR 2026",
