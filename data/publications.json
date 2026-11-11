@@ -309,6 +309,12 @@
   ],
   "2026": [
     {
+      "title": "Sequential Group Composition: A Window into the Mechanics of Deep Learning",
+      "authors": "G Luca Marchetti, D Kunin, A Myers, F Acosta, N Miolane",
+      "venue": "ICML 2026",
+      "image": "sequential_group_composition_a_1794375099106.jpg"
+    },
+    {
       "title": "GraphUniverse: Enabling Systematic Evaluation of Inductive Generalization",
       "authors": "Van Langendonck, L., Bernárdez, G., Miolane, N., Barlet-Ros, P.",
       "venue": "ICLR 2026",
