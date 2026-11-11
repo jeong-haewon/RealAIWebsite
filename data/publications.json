@@ -309,6 +309,12 @@
   ],
   "2026": [
     {
+      "title": "HOPSE: Scalable Higher-Order Positional and Structural Encoder for Combinatorial Representations",
+      "authors": "G Bernárdez*, M Montagna*, L Van Langendonck*, M Carrasco, A Akbari, L Cornelis, M Papillon, P Barlet-Ros, L Telyatnikov**, N Miolane**",
+      "venue": "NeurIPS 2026",
+      "image": "hopse_scalable_higherorder_pos_1794375365144.jpg"
+    },
+    {
       "title": "Synaptic Strength Controls Trainability and Structural Stability in Rank-Deficient RNNs",
       "authors": "F Dinc*, E de Ponnat*, H Weyer, Y Guerra, N Miolane",
       "venue": "NeurIPS 2026",
